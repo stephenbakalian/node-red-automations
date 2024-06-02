@@ -11,7 +11,7 @@ This will be a tempalte for how the automation should be shared. Put information
 
 The full list of packages that are required:
 
-        "node-red-contrib-bigtimer"
+        "node-red-contrib-home-assistant"
         "node-red-contrib-counter"
 
 - List additonal requirements here

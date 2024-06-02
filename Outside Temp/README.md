@@ -15,4 +15,5 @@ The full list of packages that are required:
 
         "node-red-contrib-home-assistant"
 
-- A weather tracking entity in HA. I am using `Meteorologisk institutt (Met.no)`
+- A weather tracking entity in HA. I am using [Meteorologisk institutt (Met.no)](https://www.home-assistant.io/integrations/met/)
+- 

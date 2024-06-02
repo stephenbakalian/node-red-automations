@@ -1,0 +1,1275 @@
+[
+    {
+        "id": "317c0ce2bd952d71",
+        "type": "moment",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "topic": "",
+        "input": "payload",
+        "inputType": "msg",
+        "inTz": "America/Toronto",
+        "adjAmount": "0",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "MM",
+        "locale": "C",
+        "output": "month",
+        "outputType": "msg",
+        "outTz": "America/Toronto",
+        "x": 380,
+        "y": 1340,
+        "wires": [
+            [
+                "935e87db8de03e0e"
+            ]
+        ]
+    },
+    {
+        "id": "935e87db8de03e0e",
+        "type": "moment",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "topic": "",
+        "input": "payload",
+        "inputType": "msg",
+        "inTz": "America/Toronto",
+        "adjAmount": "0",
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "dd",
+        "locale": "C",
+        "output": "day",
+        "outputType": "msg",
+        "outTz": "America/Toronto",
+        "x": 620,
+        "y": 1340,
+        "wires": [
+            [
+                "afae65f03802666f"
+            ]
+        ]
+    },
+    {
+        "id": "d8d88ea9e7e764a9",
+        "type": "switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "property": "month",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "5",
+                "vt": "num",
+                "v2": "10",
+                "v2t": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1050,
+        "y": 1420,
+        "wires": [
+            [
+                "f335792ac14e87f7"
+            ],
+            [
+                "be19cf700ff3c4dd"
+            ]
+        ]
+    },
+    {
+        "id": "f335792ac14e87f7",
+        "type": "switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "property": "day",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Sa",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Su",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1250,
+        "y": 1400,
+        "wires": [
+            [
+                "453af6f637ce8ce7"
+            ],
+            [
+                "453af6f637ce8ce7"
+            ],
+            [
+                "62b934cc4ecdb950"
+            ]
+        ]
+    },
+    {
+        "id": "be19cf700ff3c4dd",
+        "type": "switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "property": "day",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Sa",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Su",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1250,
+        "y": 1520,
+        "wires": [
+            [
+                "cc75cecbacc5e20e"
+            ],
+            [
+                "cc75cecbacc5e20e"
+            ],
+            [
+                "bb30f3e77ddf4f83"
+            ]
+        ]
+    },
+    {
+        "id": "34bbe4f0ffbb92b2",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set tou low 8.7",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": "{\"value\":0.087}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 420,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9947658e46b90b33",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set tou high 18.2",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.182}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 430,
+        "y": 1580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3f8911f9caa9cfed",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set tou mid 12.2",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.122}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 420,
+        "y": 1500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "62b934cc4ecdb950",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "11:00",
+        "endTime": "17:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1410,
+        "y": 1440,
+        "wires": [
+            [
+                "4c03acafb511f618"
+            ],
+            [
+                "cb0828f1e97825a2"
+            ]
+        ]
+    },
+    {
+        "id": "cb0828f1e97825a2",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "7:00",
+        "endTime": "19:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1590,
+        "y": 1500,
+        "wires": [
+            [
+                "db3a01f703048f52"
+            ],
+            [
+                "a3f29bc0c140cf15"
+            ]
+        ]
+    },
+    {
+        "id": "bb30f3e77ddf4f83",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "11:00",
+        "endTime": "17:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1410,
+        "y": 1580,
+        "wires": [
+            [
+                "db3a01f703048f52"
+            ],
+            [
+                "ec6de79fe01f7ebe"
+            ]
+        ]
+    },
+    {
+        "id": "ec6de79fe01f7ebe",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "7:00",
+        "endTime": "19:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 1580,
+        "wires": [
+            [
+                "4c03acafb511f618"
+            ],
+            [
+                "a3f29bc0c140cf15"
+            ]
+        ]
+    },
+    {
+        "id": "820506525efeb1d3",
+        "type": "cronplus",
+        "z": "0e20099a6949087b",
+        "name": "Every hour on the hour",
+        "outputField": "payload",
+        "timeZone": "",
+        "storeName": "",
+        "commandResponseMsgOutput": "output1",
+        "defaultLocation": "45.22287065598285 -75.68275451660155",
+        "defaultLocationType": "default",
+        "outputs": 1,
+        "options": [
+            {
+                "name": "schedule1",
+                "topic": "topic1",
+                "payloadType": "default",
+                "payload": "",
+                "expressionType": "cron",
+                "expression": "0 0 * * * ? *",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            }
+        ],
+        "x": 140,
+        "y": 1340,
+        "wires": [
+            [
+                "317c0ce2bd952d71"
+            ]
+        ]
+    },
+    {
+        "id": "4b35c77e3706cc6a",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET TOU LOW PRICE",
+        "links": [
+            "453af6f637ce8ce7",
+            "a3f29bc0c140cf15",
+            "cc75cecbacc5e20e",
+            "24ad003ad347e2b0"
+        ],
+        "x": 285,
+        "y": 1440,
+        "wires": [
+            [
+                "34bbe4f0ffbb92b2",
+                "73b0004e29ce9261"
+            ]
+        ]
+    },
+    {
+        "id": "6dd4f29cac727d8b",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET TOU MID PRICE",
+        "links": [
+            "db3a01f703048f52"
+        ],
+        "x": 285,
+        "y": 1520,
+        "wires": [
+            [
+                "3f8911f9caa9cfed",
+                "6cee3ddacde33dd2"
+            ]
+        ]
+    },
+    {
+        "id": "b4f71f7270a072ba",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET TOU HIGH PRICE",
+        "links": [
+            "4c03acafb511f618"
+        ],
+        "x": 285,
+        "y": 1600,
+        "wires": [
+            [
+                "9947658e46b90b33",
+                "29286d3b6acac765"
+            ]
+        ]
+    },
+    {
+        "id": "453af6f637ce8ce7",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 11",
+        "mode": "link",
+        "links": [
+            "4b35c77e3706cc6a"
+        ],
+        "x": 1385,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "cc75cecbacc5e20e",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 12",
+        "mode": "link",
+        "links": [
+            "4b35c77e3706cc6a"
+        ],
+        "x": 1385,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "a3f29bc0c140cf15",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 13",
+        "mode": "link",
+        "links": [
+            "4b35c77e3706cc6a"
+        ],
+        "x": 1805,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "db3a01f703048f52",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 14",
+        "mode": "link",
+        "links": [
+            "6dd4f29cac727d8b"
+        ],
+        "x": 1805,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "4c03acafb511f618",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 15",
+        "mode": "link",
+        "links": [
+            "b4f71f7270a072ba"
+        ],
+        "x": 1805,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "2020e51bc0b4fab5",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set ulo weekend off 8.7",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.087}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 450,
+        "y": 1700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a71eab978108c0c3",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET ULO WEEKEND OFF PRICE",
+        "links": [
+            "4fb3c39d866a175a"
+        ],
+        "x": 285,
+        "y": 1720,
+        "wires": [
+            [
+                "2020e51bc0b4fab5",
+                "09e078077c1643d5"
+            ]
+        ]
+    },
+    {
+        "id": "c92f2a1563e16a65",
+        "type": "switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "property": "day",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Sa",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Su",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1070,
+        "y": 1700,
+        "wires": [
+            [
+                "b1eee6e7d8c23f3c"
+            ],
+            [
+                "b1eee6e7d8c23f3c"
+            ],
+            [
+                "3c6f764051d99c47"
+            ]
+        ]
+    },
+    {
+        "id": "b1eee6e7d8c23f3c",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "7:00",
+        "endTime": "23:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1270,
+        "y": 1660,
+        "wires": [
+            [
+                "4fb3c39d866a175a"
+            ],
+            [
+                "e790cc3a7efafcbb"
+            ]
+        ]
+    },
+    {
+        "id": "e592ed7605047316",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set ulo overnight 2.8",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.028}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 440,
+        "y": 1780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df6d9238011b9934",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET ULO OVERNIGHT PRICE",
+        "links": [
+            "e790cc3a7efafcbb",
+            "b01717d7c597e0bd"
+        ],
+        "x": 285,
+        "y": 1800,
+        "wires": [
+            [
+                "e592ed7605047316",
+                "595743bba195af17"
+            ]
+        ]
+    },
+    {
+        "id": "4fb3c39d866a175a",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 33",
+        "mode": "link",
+        "links": [
+            "a71eab978108c0c3"
+        ],
+        "x": 1405,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "e790cc3a7efafcbb",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 34",
+        "mode": "link",
+        "links": [
+            "df6d9238011b9934"
+        ],
+        "x": 1405,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "3c6f764051d99c47",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "7:00",
+        "endTime": "23:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1270,
+        "y": 1720,
+        "wires": [
+            [
+                "3a3dec765a36b301"
+            ],
+            [
+                "b01717d7c597e0bd"
+            ]
+        ]
+    },
+    {
+        "id": "3a3dec765a36b301",
+        "type": "time-range-switch",
+        "z": "0e20099a6949087b",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "16:00",
+        "endTime": "21:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1450,
+        "y": 1720,
+        "wires": [
+            [
+                "96e0f08e1bd46c1b"
+            ],
+            [
+                "03ab4b44200e1ea9"
+            ]
+        ]
+    },
+    {
+        "id": "b01717d7c597e0bd",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 35",
+        "mode": "link",
+        "links": [
+            "df6d9238011b9934"
+        ],
+        "x": 1395,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "58fd26f7d80675e9",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set ulo mid 12.2",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.122}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 420,
+        "y": 1860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f29099d0b4c9d3e9",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET ULO MID PRICE",
+        "links": [
+            "03ab4b44200e1ea9"
+        ],
+        "x": 285,
+        "y": 1880,
+        "wires": [
+            [
+                "58fd26f7d80675e9",
+                "9e1093c10c5b8648"
+            ]
+        ]
+    },
+    {
+        "id": "ed072d6d093bbc3b",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Set ulo peak 28.6",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.energy_price",
+            "number.wallbox_pulsar_plus_us_sn_357637_energy_price"
+        ],
+        "data": " {\"value\":0.286}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 430,
+        "y": 1940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49745ca489cdecfb",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "SET ULO PEAK PRICE",
+        "links": [
+            "96e0f08e1bd46c1b"
+        ],
+        "x": 285,
+        "y": 1960,
+        "wires": [
+            [
+                "ed072d6d093bbc3b",
+                "64d0103aa8f06b11"
+            ]
+        ]
+    },
+    {
+        "id": "96e0f08e1bd46c1b",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 36",
+        "mode": "link",
+        "links": [
+            "49745ca489cdecfb"
+        ],
+        "x": 1585,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "03ab4b44200e1ea9",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 37",
+        "mode": "link",
+        "links": [
+            "f29099d0b4c9d3e9"
+        ],
+        "x": 1585,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "2d6cae6dc83e766d",
+        "type": "api-call-service",
+        "z": "0e20099a6949087b",
+        "name": "Electricity Price Input_Select",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_select",
+        "service": "select_option",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_select.electricity_price"
+        ],
+        "data": "{\"option\":\"{{payload}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 440,
+        "y": 2080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "29286d3b6acac765",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "High",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "High",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 1620,
+        "wires": [
+            [
+                "de913ce04ff53605"
+            ]
+        ]
+    },
+    {
+        "id": "73b0004e29ce9261",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Low",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Low",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 1460,
+        "wires": [
+            [
+                "a0ec9e0fad1ce98e"
+            ]
+        ]
+    },
+    {
+        "id": "6cee3ddacde33dd2",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Mid",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Mid",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 1540,
+        "wires": [
+            [
+                "86afc3a792678e40"
+            ]
+        ]
+    },
+    {
+        "id": "09e078077c1643d5",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Weekend",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Weekend",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1740,
+        "wires": [
+            [
+                "43cb2c06fd5bb8ba"
+            ]
+        ]
+    },
+    {
+        "id": "595743bba195af17",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Ultra Low",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Ultra Low",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1820,
+        "wires": [
+            [
+                "b7238bfadf23c0bf"
+            ]
+        ]
+    },
+    {
+        "id": "64d0103aa8f06b11",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Ultra High",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Ultra High",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1980,
+        "wires": [
+            [
+                "7e05992ca389d2a4"
+            ]
+        ]
+    },
+    {
+        "id": "9e1093c10c5b8648",
+        "type": "change",
+        "z": "0e20099a6949087b",
+        "name": "Mid",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Mid",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 1900,
+        "wires": [
+            [
+                "f1bea16a91f2a6ee"
+            ]
+        ]
+    },
+    {
+        "id": "f405c278c0b0747d",
+        "type": "link in",
+        "z": "0e20099a6949087b",
+        "name": "Price Input Select",
+        "links": [
+            "7e05992ca389d2a4",
+            "f1bea16a91f2a6ee",
+            "b7238bfadf23c0bf",
+            "43cb2c06fd5bb8ba",
+            "de913ce04ff53605",
+            "86afc3a792678e40",
+            "a0ec9e0fad1ce98e"
+        ],
+        "x": 275,
+        "y": 2080,
+        "wires": [
+            [
+                "2d6cae6dc83e766d"
+            ]
+        ]
+    },
+    {
+        "id": "7e05992ca389d2a4",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 38",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 505,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "f1bea16a91f2a6ee",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 39",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 505,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "b7238bfadf23c0bf",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 40",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 505,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "43cb2c06fd5bb8ba",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 41",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 505,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "de913ce04ff53605",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 42",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 475,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "86afc3a792678e40",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 43",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 485,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "a0ec9e0fad1ce98e",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 44",
+        "mode": "link",
+        "links": [
+            "f405c278c0b0747d"
+        ],
+        "x": 485,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "afae65f03802666f",
+        "type": "api-current-state",
+        "z": "0e20099a6949087b",
+        "name": "Is Holiday?",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "calendar.canada_on",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 910,
+        "y": 1660,
+        "wires": [
+            [
+                "b1eee6e7d8c23f3c"
+            ],
+            [
+                "c92f2a1563e16a65"
+            ]
+        ]
+    },
+    {
+        "id": "6ec0f55f330dbeb8",
+        "type": "api-current-state",
+        "z": "0e20099a6949087b",
+        "name": "Is Holiday?",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "calendar.canada_on",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 890,
+        "y": 1400,
+        "wires": [
+            [
+                "24ad003ad347e2b0"
+            ],
+            [
+                "d8d88ea9e7e764a9"
+            ]
+        ]
+    },
+    {
+        "id": "24ad003ad347e2b0",
+        "type": "link out",
+        "z": "0e20099a6949087b",
+        "name": "link out 61",
+        "mode": "link",
+        "links": [
+            "4b35c77e3706cc6a"
+        ],
+        "x": 1015,
+        "y": 1380,
+        "wires": []
+    }
+]
