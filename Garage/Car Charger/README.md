@@ -1,4 +1,4 @@
-# Temaple Name
+# Car Charger
 
 Set my car OCPP compatible car charger to charge when a car is pluged in but only during lower cost energy prices.Sends a notification to allow for overrides if the electricity pricing is high. 
 

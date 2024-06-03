@@ -1,4 +1,4 @@
-# Temaple Name
+# Template Name
 
 This will be a tempalte for how the automation should be shared. Put information about flow here.
 

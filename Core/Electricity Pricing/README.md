@@ -1,4 +1,4 @@
-# Temaple Name
+# Electricity Pricing
 
 Update electricity pricing and store it in an `input_select` and `input_number` in HA. The input number entity allows me to use HA energy tab and calculates cost while the input select allows me to more easily make automations around the pricing. The seperation allows for easier modification if we switch between different plans with the electricity provider.
 

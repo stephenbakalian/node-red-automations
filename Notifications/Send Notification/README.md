@@ -1,4 +1,4 @@
-# Temaple Name
+# Send Notifications
 
 Send notification with two actionable items. the `msg` object must contain the following
 

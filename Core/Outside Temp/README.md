@@ -1,4 +1,4 @@
-# Temaple Name
+# Outside Temp
 
 Every 30min get the temperature then categorize it into one of five options, then store it into a HA `input_select`. 
 

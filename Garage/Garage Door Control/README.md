@@ -1,4 +1,4 @@
-# Temaple Name
+# Garage Door Controls
 
 Set up links for garage door controls for other flows to call
 
