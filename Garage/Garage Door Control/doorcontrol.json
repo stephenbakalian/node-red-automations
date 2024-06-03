@@ -1,0 +1,174 @@
+[
+    {
+        "id": "63621fe9066612d5",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Turn on garage light",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.ratgdov25i_905993_light"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 200,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d9a2a7a2409194a",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Lock garage",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "lock",
+        "service": "lock",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "lock.ratgdov25i_905993_lock_remotes"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 170,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1dc9e715f13a19af",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "Lock Garage",
+        "links": [
+            "ecbff09c0a6d08e8"
+        ],
+        "x": 55,
+        "y": 740,
+        "wires": [
+            [
+                "2d9a2a7a2409194a"
+            ]
+        ]
+    },
+    {
+        "id": "d8bcc86da2878d73",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Unlock garage",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "lock",
+        "service": "unlock",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "lock.ratgdov25i_905993_lock_remotes"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 180,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f3d15fbdeb02d6c",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "Unlock Garage",
+        "links": [
+            "057b0a0188d598fd"
+        ],
+        "x": 55,
+        "y": 800,
+        "wires": [
+            [
+                "d8bcc86da2878d73"
+            ]
+        ]
+    },
+    {
+        "id": "be3f3d6e1b1adb82",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "Turn on Garage Lights",
+        "links": [
+            "2330e7b6767d529d"
+        ],
+        "x": 55,
+        "y": 620,
+        "wires": [
+            [
+                "63621fe9066612d5"
+            ]
+        ]
+    },
+    {
+        "id": "b11957ba1f7ad66f",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Turn off garage light",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.ratgdov25i_905993_light"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 200,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a58288f509ad19eb",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "Turn off Garage Lights",
+        "links": [
+            "11d8d74bab1bea92"
+        ],
+        "x": 55,
+        "y": 680,
+        "wires": [
+            [
+                "b11957ba1f7ad66f"
+            ]
+        ]
+    }
+]

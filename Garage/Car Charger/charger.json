@@ -1,0 +1,899 @@
+[
+    {
+        "id": "eb62d392c78fd58d",
+        "type": "server-state-changed",
+        "z": "849c8c435949ee82",
+        "name": "Car plugged in",
+        "server": "",
+        "version": 5,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entityId": "switch.charger_availability",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "off",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "a79f7271efd97dcd"
+            ],
+            [
+                "15a4eaf250c562c6"
+            ]
+        ]
+    },
+    {
+        "id": "b2b4a58b89f075c9",
+        "type": "switch",
+        "z": "849c8c435949ee82",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Ultra High",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "High",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Mid",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Weekend",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Low",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Ultra Low",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 6,
+        "x": 885,
+        "y": 120,
+        "wires": [
+            [
+                "27e186e1aef3d79b"
+            ],
+            [
+                "27e186e1aef3d79b"
+            ],
+            [
+                "03fbcbcc3b53d576"
+            ],
+            [
+                "d6988530d1b288a0"
+            ],
+            [
+                "d6988530d1b288a0"
+            ],
+            [
+                "d6988530d1b288a0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "58bf609365628b14",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "Electricity Price",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.electricity_price",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 760,
+        "y": 120,
+        "wires": [
+            [
+                "b2b4a58b89f075c9"
+            ]
+        ]
+    },
+    {
+        "id": "eee91082eca5f6fa",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Start Charging",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.charger_charge_control"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 580,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32be79ba102b81e3",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Stop Charging",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.charger_charge_control"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 200,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "371856ff058f866c",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "CHARGE CAR",
+        "links": [
+            "d6988530d1b288a0",
+            "c9cbfa8e04b4e680",
+            "b8bd4eb7ff61bca0",
+            "66400b3d7f82127e",
+            "233027b7db39b920"
+        ],
+        "x": 75,
+        "y": 280,
+        "wires": [
+            [
+                "6555fadc806d49ef"
+            ]
+        ]
+    },
+    {
+        "id": "db2bca167b8b8969",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "STOP CHARGING CAR",
+        "links": [
+            "27e186e1aef3d79b"
+        ],
+        "x": 75,
+        "y": 380,
+        "wires": [
+            [
+                "32be79ba102b81e3"
+            ]
+        ]
+    },
+    {
+        "id": "2ef503ced4a45e34",
+        "type": "change",
+        "z": "849c8c435949ee82",
+        "name": "Set Notification msg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "title",
+                "pt": "msg",
+                "to": "Car plugged in",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "message",
+                "pt": "msg",
+                "to": "Low power rates are not in effect. Would you like to start charging the car?",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "actionable_data_title_1",
+                "pt": "msg",
+                "to": "Start charging Escape",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "actionable_data_action_1",
+                "pt": "msg",
+                "to": "start_charging_escape_outside_hours",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "actionable_data_title_2",
+                "pt": "msg",
+                "to": "Wait for low rate",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "actionable_data_action_2",
+                "pt": "msg",
+                "to": "do_not_start_charging_car",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 440,
+        "wires": [
+            [
+                "1eaef9ac329151e5"
+            ]
+        ],
+        "info": "Changes the person entity to a simple name\n\nexample: person.joe -> Joe"
+    },
+    {
+        "id": "886a1cae58bfc196",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "CAR NOTIFICATION",
+        "links": [
+            "03fbcbcc3b53d576"
+        ],
+        "x": 75,
+        "y": 440,
+        "wires": [
+            [
+                "daa221b3767bac16"
+            ]
+        ]
+    },
+    {
+        "id": "eb679d7b54308be1",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "is car plugged in",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "switch.charger_availability",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "a79f7271efd97dcd"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "88358809b581f42a",
+        "type": "link in",
+        "z": "849c8c435949ee82",
+        "name": "CAR PLUG AUTOMATION",
+        "links": [
+            "8f28de842c2ab26d"
+        ],
+        "x": 75,
+        "y": 180,
+        "wires": [
+            [
+                "eb679d7b54308be1"
+            ]
+        ]
+    },
+    {
+        "id": "1dfe3c05d20c578e",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "Is override on",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.car_charger_override",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 460,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "5c2468d7cf10c63c"
+            ]
+        ]
+    },
+    {
+        "id": "e25f6bae2236c051",
+        "type": "server-state-changed",
+        "z": "849c8c435949ee82",
+        "name": "Charger Override",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.car_charger_override",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "eb679d7b54308be1"
+            ]
+        ]
+    },
+    {
+        "id": "15a4eaf250c562c6",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Charger override off",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_boolean",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_boolean.car_charger_override"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 320,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6555fadc806d49ef",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "is charing off",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "switch.charger_charge_control",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "eee91082eca5f6fa"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5c2468d7cf10c63c",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "is charing off",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "switch.charger_charge_control",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 650,
+        "y": 440,
+        "wires": [
+            [
+                "2ef503ced4a45e34"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "233027b7db39b920",
+        "type": "link out",
+        "z": "849c8c435949ee82",
+        "name": "link out 57",
+        "mode": "link",
+        "links": [
+            "371856ff058f866c"
+        ],
+        "x": 695,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a79f7271efd97dcd",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "Is override on",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.car_charger_override",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "233027b7db39b920"
+            ],
+            [
+                "58bf609365628b14"
+            ]
+        ]
+    },
+    {
+        "id": "daa221b3767bac16",
+        "type": "api-current-state",
+        "z": "849c8c435949ee82",
+        "name": "charger status",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.charger_status_connector",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "65ad99d1d6562923"
+            ]
+        ]
+    },
+    {
+        "id": "65ad99d1d6562923",
+        "type": "switch",
+        "z": "849c8c435949ee82",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Preparing",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "SuspendedEV",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 335,
+        "y": 440,
+        "wires": [
+            [],
+            [],
+            [
+                "1dfe3c05d20c578e"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "9a52fb7dbd4754c3",
+        "type": "switch",
+        "z": "849c8c435949ee82",
+        "name": "",
+        "property": "payload.event.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "start_charging_escape_outside_hours",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "do_not_start_charging_car",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 390,
+        "y": 500,
+        "wires": [
+            [
+                "cb8b5f961e60bd32"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d034194d11ec01dc",
+        "type": "server-events",
+        "z": "849c8c435949ee82",
+        "name": "Actionable Notification Recieved",
+        "server": "",
+        "version": 3,
+        "exposeAsEntityConfig": "",
+        "eventType": "mobile_app_notification_action",
+        "eventData": "",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "event_type",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "9a52fb7dbd4754c3"
+            ]
+        ]
+    },
+    {
+        "id": "c9cbfa8e04b4e680",
+        "type": "link out",
+        "z": "849c8c435949ee82",
+        "name": "link out 46",
+        "mode": "link",
+        "links": [
+            "371856ff058f866c"
+        ],
+        "x": 725,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "cb8b5f961e60bd32",
+        "type": "api-call-service",
+        "z": "849c8c435949ee82",
+        "name": "Charger override on",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_boolean",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_boolean.car_charger_override"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 580,
+        "y": 500,
+        "wires": [
+            [
+                "c9cbfa8e04b4e680"
+            ]
+        ]
+    },
+    {
+        "id": "d6988530d1b288a0",
+        "type": "link out",
+        "z": "849c8c435949ee82",
+        "name": "link out 45",
+        "mode": "link",
+        "links": [
+            "371856ff058f866c"
+        ],
+        "x": 945,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "03fbcbcc3b53d576",
+        "type": "link out",
+        "z": "849c8c435949ee82",
+        "name": "link out 47",
+        "mode": "link",
+        "links": [
+            "886a1cae58bfc196"
+        ],
+        "x": 945,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "27e186e1aef3d79b",
+        "type": "link out",
+        "z": "849c8c435949ee82",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "db2bca167b8b8969"
+        ],
+        "x": 945,
+        "y": 80,
+        "wires": []
+    }
+]

@@ -9,9 +9,15 @@ This will be a tempalte for how the automation should be shared. Put information
 
 ## Requirements
 
-The full list of packages that are required:
+### Node-Red packages
 
         "node-red-contrib-home-assistant"
         "node-red-contrib-counter"
 
-- List additonal requirements here
+### Home Assistant
+
+- [Home Assistant Community Store](https://hacs.xyz/) (HACS)
+
+### Other Node-Red flows
+
+- [template flow](./../template/)

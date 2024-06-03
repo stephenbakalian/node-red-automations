@@ -1,0 +1,43 @@
+[
+    {
+        "id": "26e627fda0c36794",
+        "type": "api-call-service",
+        "z": "ce7a9de8ee81c702",
+        "name": "Send Notification",
+        "server": "",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "notify",
+        "service": "mobile_device_here",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\",\"data\":{\"actions\":[{\"action\":\"{{actionable_data_action_1}}\",\"title\":\"{{actionable_data_title_1}}\"},{\"action\":\"{{actionable_data_action_2}}\",\"title\":\"{{actionable_data_title_2}}\"}]}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 270,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99c002f03574fc91",
+        "type": "link in",
+        "z": "ce7a9de8ee81c702",
+        "name": "Send Notification",
+        "links": [
+            "1eaef9ac329151e5"
+        ],
+        "x": 105,
+        "y": 700,
+        "wires": [
+            [
+                "26e627fda0c36794"
+            ]
+        ]
+    }
+]

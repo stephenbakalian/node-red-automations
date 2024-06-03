@@ -11,9 +11,11 @@ This flow contains two pricing models that my local electricity provider offers.
 
 ## Requirements
 
-The full list of packages that are required:
+### Node-Red packages
 
         "node-red-contrib-home-assistant"
         "node-red-contrib-time-range-switch"
+
+### Home Assistant
 
 - A holiday tracking entity in HA. I am using [Holiday](https://www.home-assistant.io/integrations/holiday)
