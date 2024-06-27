@@ -1,0 +1,3371 @@
+[
+    {
+        "id": "765eb573.0fdd6c",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Very Hot",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Hot",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Warm",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cool",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cold",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 5,
+        "x": 1435,
+        "y": 520,
+        "wires": [
+            [
+                "b44f5994.c041e8"
+            ],
+            [
+                "c548782d5e225a68"
+            ],
+            [
+                "c48c2427.adb168"
+            ],
+            [
+                "4ce281e195ad9ad6"
+            ],
+            [
+                "45da942042b9b65a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "9c6c937b.85da3",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Outside Climate",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.outside_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1300,
+        "y": 520,
+        "wires": [
+            [
+                "765eb573.0fdd6c"
+            ]
+        ]
+    },
+    {
+        "id": "ab622a57.9baa48",
+        "type": "inject",
+        "z": "6360d3b8.6f440c",
+        "name": "15m",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 580,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "cc65b5df.16e3f8",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "Inside Temp",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "climate.t6_pro_z_wave_programmable_thermostat",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "f9ef101b.e45d8",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "Doors/Windows Open?",
+        "server": "",
+        "version": 5,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entityId": "binary_sensor.doors_and_windows",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "on",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "1",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 120,
+        "y": 940,
+        "wires": [
+            [
+                "89604fbdb208b948"
+            ],
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "e7b43cba.c961",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Doors/Windows Open",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.doors_and_windows",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 440,
+        "y": 620,
+        "wires": [
+            [
+                "4a4525b33be52638",
+                "e8380979f54018a5",
+                "fcf2505d6f62b6cf"
+            ],
+            [
+                "7ae958bb.d0b0e8"
+            ]
+        ]
+    },
+    {
+        "id": "5fcba865.2f5368",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "House Occupied",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "binary_sensor.someone_home",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 100,
+        "y": 700,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "d5518389.0ee23",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Very Hot",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Hot",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Warm",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cool",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cold",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 5,
+        "x": 1605,
+        "y": 1180,
+        "wires": [
+            [
+                "e89aaf4c960ec90c"
+            ],
+            [
+                "e89aaf4c960ec90c"
+            ],
+            [
+                "d8a9cb29.7d8cc8"
+            ],
+            [
+                "d8a9cb29.7d8cc8"
+            ],
+            [
+                "97070e72283a1c0c"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "aa01effb.f6b1f",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Outside Climate",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.outside_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1490,
+        "y": 1180,
+        "wires": [
+            [
+                "d5518389.0ee23"
+            ]
+        ]
+    },
+    {
+        "id": "3fabd989.e08766",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "19.5",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "23.5",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 2045,
+        "y": 1180,
+        "wires": [
+            [
+                "31e82cf6.161c24"
+            ],
+            [
+                "87b73570.c93e48"
+            ],
+            [
+                "8c28a6c8.5daa98"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1a3cc18a.1e5d6e",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1940,
+        "y": 1180,
+        "wires": [
+            [
+                "3fabd989.e08766"
+            ]
+        ]
+    },
+    {
+        "id": "48ec038.20922fc",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Vacation Mode OFF",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.vacation_mode",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1310,
+        "y": 1340,
+        "wires": [
+            [
+                "aa01effb.f6b1f"
+            ],
+            [
+                "76d9508f.cc725"
+            ]
+        ]
+    },
+    {
+        "id": "d8a9cb29.7d8cc8",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "06:30",
+        "endTime": "20:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1790,
+        "y": 1220,
+        "wires": [
+            [
+                "1a3cc18a.1e5d6e"
+            ],
+            [
+                "97070e72283a1c0c"
+            ]
+        ]
+    },
+    {
+        "id": "f964ef70.b81fd",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "17",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "24",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1675,
+        "y": 1420,
+        "wires": [
+            [
+                "7c1a896f.e3ea58"
+            ],
+            [
+                "605363e5.f1686c"
+            ],
+            [
+                "325bd8dd8ca784bc"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "76d9508f.cc725",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1570,
+        "y": 1420,
+        "wires": [
+            [
+                "f964ef70.b81fd"
+            ]
+        ]
+    },
+    {
+        "id": "e283a490.b29248",
+        "type": "comment",
+        "z": "6360d3b8.6f440c",
+        "name": "Thermostat Temperature Adjustments",
+        "info": "",
+        "x": 170,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "b44f5994.c041e8",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "07:00",
+        "endTime": "19:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 380,
+        "wires": [
+            [
+                "ed1fbaa4.0f0348"
+            ],
+            [
+                "83eda839.a2fe78"
+            ]
+        ]
+    },
+    {
+        "id": "563c2245.645fdc",
+        "type": "delay",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "200",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "e7b43cba.c961"
+            ]
+        ]
+    },
+    {
+        "id": "7ae958bb.d0b0e8",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Thermostat Override ON",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.thermostat_override",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 610,
+        "y": 680,
+        "wires": [
+            [],
+            [
+                "ac9c3b10a6731b3f"
+            ]
+        ]
+    },
+    {
+        "id": "f91c6689.eb17a8",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "Thermostat Override",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.thermostat_override",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 110,
+        "y": 760,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "83182c0f.87ae2",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Occupied?",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.someone_home",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1070,
+        "y": 760,
+        "wires": [
+            [
+                "9c6c937b.85da3"
+            ],
+            [
+                "48ec038.20922fc"
+            ]
+        ]
+    },
+    {
+        "id": "d4ca240e.a53818",
+        "type": "inject",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "9c6c937b.85da3"
+            ]
+        ]
+    },
+    {
+        "id": "cc0bfc1c.11486",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "Guest Mode Boolean",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.guest_mode",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 120,
+        "y": 820,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "ed1fbaa4.0f0348",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 23.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "23.5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1800,
+        "y": 360,
+        "wires": [
+            [
+                "ca45e67f.16d748"
+            ]
+        ]
+    },
+    {
+        "id": "83eda839.a2fe78",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1800,
+        "y": 400,
+        "wires": [
+            [
+                "ca45e67f.16d748"
+            ]
+        ]
+    },
+    {
+        "id": "c496029.c6df",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "19",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "22",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1915,
+        "y": 540,
+        "wires": [
+            [
+                "2aff51e9.02642e"
+            ],
+            [
+                "83256f76.0f901"
+            ],
+            [
+                "1f8fae8f.84e871"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "755e908f.001e2",
+        "type": "api-call-service",
+        "z": "6360d3b8.6f440c",
+        "name": "Set HVAC Mode",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "climate",
+        "service": "set_hvac_mode",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.t6_pro_z_wave_programmable_thermostat"
+        ],
+        "data": "{\"hvac_mode\":\"{{set_hvac_mode}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 2740,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a26bc1d2.8ddab",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1810,
+        "y": 540,
+        "wires": [
+            [
+                "c496029.c6df"
+            ]
+        ]
+    },
+    {
+        "id": "c48c2427.adb168",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "07:00",
+        "endTime": "19:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 580,
+        "wires": [
+            [
+                "a26bc1d2.8ddab"
+            ],
+            [
+                "6eb4c3f.450363c"
+            ]
+        ]
+    },
+    {
+        "id": "92205844.6b2f08",
+        "type": "api-call-service",
+        "z": "6360d3b8.6f440c",
+        "name": "Set Temp",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "climate",
+        "service": "set_temperature",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.t6_pro_z_wave_programmable_thermostat"
+        ],
+        "data": "{\"temperature\":\"{{set_temp}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 2880,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0416f33.aa2c9",
+        "type": "api-call-service",
+        "z": "6360d3b8.6f440c",
+        "name": "Turn OFF HVAC",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "climate",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.t6_pro_z_wave_programmable_thermostat"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 2420,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2aff51e9.02642e",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 19",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "19",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 520,
+        "wires": [
+            [
+                "d07e1644.6ddd08"
+            ]
+        ]
+    },
+    {
+        "id": "83256f76.0f901",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 22.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22.5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 560,
+        "wires": [
+            [
+                "d07e1644.6ddd08"
+            ]
+        ]
+    },
+    {
+        "id": "6eb4c3f.450363c",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1800,
+        "y": 600,
+        "wires": [
+            [
+                "81b179fd.cc4878"
+            ]
+        ]
+    },
+    {
+        "id": "f48a0ee2.94548",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1780,
+        "y": 900,
+        "wires": [
+            [
+                "c4ab30f9.dd2fa"
+            ]
+        ]
+    },
+    {
+        "id": "d07e1644.6ddd08",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "mode": "link",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2115,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4c23b0d2.6350c",
+        "type": "link in",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "d07e1644.6ddd08",
+            "1ee3a306.5db3ad",
+            "78282eb9.674d7",
+            "9b7a3b01.a6c578",
+            "3c70bc2.2718d44",
+            "bbbc8a46.483128",
+            "c4ab30f9.dd2fa",
+            "81b179fd.cc4878",
+            "ceffe031.b01ec",
+            "d1cebdae.2c1ad",
+            "1b89f20a.55b67e",
+            "eebce04a.08d8b",
+            "ca45e67f.16d748",
+            "759032a3.5cbd7c",
+            "4c3e572c.fc4be8",
+            "56ff69be.8c6d38",
+            "a8d8b925.34ddf8",
+            "7eff1814.58c3b8",
+            "453b77fa.225928",
+            "e777c88.2c2ab38",
+            "b9cf7e1f.66a9a",
+            "6ef6a2a1.aef70c",
+            "7e21b2f0.9b4f4c",
+            "7956f6e4.68b698",
+            "70cddcaf.950054",
+            "6d37bae3.8f84e4",
+            "781dc0eb.7a20c",
+            "b884f4c3.662018",
+            "d09e38d6.00da58",
+            "61dfda14.286494",
+            "f32e5f36.afede",
+            "69c96ca0.c8e8c4",
+            "5becfb82.bb1df4",
+            "333700d9.1a901",
+            "a00f4917.6c93f8",
+            "90ada84a.0e31c8",
+            "85d9fa4d.c776b8",
+            "fe5747d6.47e748",
+            "c4a1077e.9a6d28",
+            "d5cb5dde.a4351",
+            "4399b6a6.a42f48",
+            "8397bf68.68a52",
+            "8cf319b4.dfaeb8",
+            "2568dc54.f39144",
+            "9d99ae68.66e4e",
+            "3f370110.4d27ce",
+            "5ad501f1.9d2a9",
+            "374bf29e.fccbfe",
+            "6f18fac7.f981b4",
+            "f1d76753.16af08",
+            "41b9c3bf.aa691c",
+            "e16ba25c.308f3",
+            "bb5b9489.c25f38",
+            "77fb5939.aa5e38",
+            "cc510e02.16fae",
+            "7554d59e.8869ac",
+            "caadc9fb.15ba78",
+            "2099191b.f79a56",
+            "3e2cd7a8.f2b7d8",
+            "ada54966.736bb8",
+            "eb8e2494.a58f48",
+            "de47a0b.399bb6",
+            "f2a770fa.04905",
+            "41c9298b.5ad498",
+            "11eb3203.fb5fbe",
+            "fa4f77f7.765eb8",
+            "ba0dabb9.3f4448",
+            "2c638dc2.ae2ad2",
+            "99570758.7c5da8",
+            "4a8ee260.0c398c",
+            "85971efe.a8506",
+            "d30bc314.bdbbf",
+            "9856868a.e6b8d8",
+            "4f7339e9.712ac8",
+            "7440c03.c8ec64",
+            "b5114b3799fb7a24",
+            "39d7b11cbbbabf55",
+            "e3fa61cc853aeb9b",
+            "7dfa4edbf65316ba",
+            "8ddcbef18fed5184",
+            "191b5135602ae760",
+            "4713c50c54363d31",
+            "e20c9c0e20603ff2",
+            "be68b79960b2a734",
+            "6141ac61393d9864",
+            "3437f1e2e87a503e",
+            "8eed7c0145befad3",
+            "04d7e513150c9719",
+            "c63d6659ee3bfdb6",
+            "20a20e28e002423e",
+            "58f848d83a6a51ce",
+            "df0f65f3c10472b6",
+            "d45a8a6c9141a5b9",
+            "a8afdd1777408079",
+            "c7141f588980e093",
+            "70090c425abbb77d",
+            "1bfeb3d7d0180451",
+            "aed00f6092874c1d",
+            "95b8bb797d7c9948",
+            "b610eabc2e5e1a44",
+            "c1699c686849f4cb",
+            "8be6506cf194f658"
+        ],
+        "x": 2285,
+        "y": 880,
+        "wires": [
+            [
+                "59d98dca3ea7a7f2"
+            ]
+        ]
+    },
+    {
+        "id": "c4ab30f9.dd2fa",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2065,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "81b179fd.cc4878",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1895,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "aabb81b3.2f426",
+        "type": "link in",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "1f8fae8f.84e871",
+            "c9cfaafa.2def08",
+            "f2663f6f.06434",
+            "8c28a6c8.5daa98",
+            "7f2c6076.a9756",
+            "48c54178.3b377",
+            "ee0585b3.eb7918",
+            "47b481c3.a0783",
+            "63f30795.20bb48",
+            "c7591cfa.e932a",
+            "3bd49ddc.aadb22",
+            "4f8b67ed.ce3668",
+            "8e1cff69.f883c",
+            "caab8cb2.7a0b9",
+            "23a4cc8a.30d104",
+            "ececc6a6927bbaf5",
+            "e48f1633d43abe8e",
+            "8ab32ff912e95a66",
+            "ad4e0ffa5fc54b8d",
+            "e56030ccda9ec6ba",
+            "06f6260613914a52",
+            "d923559469f3808e",
+            "325bd8dd8ca784bc",
+            "49a4aec0d5e02382",
+            "607e40bf3cc67c63",
+            "e648e73a5931a69a",
+            "89604fbdb208b948",
+            "fcf2505d6f62b6cf",
+            "a6f949567d8b0a75"
+        ],
+        "x": 2295,
+        "y": 1000,
+        "wires": [
+            [
+                "c0416f33.aa2c9"
+            ]
+        ]
+    },
+    {
+        "id": "1f8fae8f.84e871",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "mode": "link",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1975,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "ca45e67f.16d748",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1895,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "8c28a6c8.5daa98",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 2105,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "31e82cf6.161c24",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2150,
+        "y": 1140,
+        "wires": [
+            [
+                "b9cf7e1f.66a9a"
+            ]
+        ]
+    },
+    {
+        "id": "87b73570.c93e48",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 24",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2150,
+        "y": 1180,
+        "wires": [
+            [
+                "b9cf7e1f.66a9a"
+            ]
+        ]
+    },
+    {
+        "id": "b9cf7e1f.66a9a",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2245,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "7c1a896f.e3ea58",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 17",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "17",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1780,
+        "y": 1380,
+        "wires": [
+            [
+                "6d37bae3.8f84e4"
+            ]
+        ]
+    },
+    {
+        "id": "605363e5.f1686c",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 26",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "26",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1780,
+        "y": 1420,
+        "wires": [
+            [
+                "6d37bae3.8f84e4"
+            ]
+        ]
+    },
+    {
+        "id": "6d37bae3.8f84e4",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1875,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "6174d999.bdb568",
+        "type": "delay",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "750",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 2730,
+        "y": 960,
+        "wires": [
+            [
+                "92205844.6b2f08"
+            ]
+        ]
+    },
+    {
+        "id": "4f7339e9.712ac8",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2055,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "4ce281e195ad9ad6",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "06:30",
+        "endTime": "21:30",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 760,
+        "wires": [
+            [
+                "f40f8858214cb369"
+            ],
+            [
+                "d05a72ac4b1d495d"
+            ]
+        ]
+    },
+    {
+        "id": "f40f8858214cb369",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1810,
+        "y": 700,
+        "wires": [
+            [
+                "fa347b5878802b55"
+            ]
+        ]
+    },
+    {
+        "id": "fa347b5878802b55",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "22",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1915,
+        "y": 700,
+        "wires": [
+            [
+                "6be56416837957d7"
+            ],
+            [
+                "30a62c213b9a7f5c"
+            ],
+            [
+                "e56030ccda9ec6ba"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "6be56416837957d7",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 20.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20.5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 660,
+        "wires": [
+            [
+                "8eed7c0145befad3"
+            ]
+        ]
+    },
+    {
+        "id": "e56030ccda9ec6ba",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1975,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8eed7c0145befad3",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2115,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d05a72ac4b1d495d",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1810,
+        "y": 820,
+        "wires": [
+            [
+                "efcfec6ea19515e5"
+            ]
+        ]
+    },
+    {
+        "id": "30a62c213b9a7f5c",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 23",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "23",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 700,
+        "wires": [
+            [
+                "8eed7c0145befad3"
+            ]
+        ]
+    },
+    {
+        "id": "efcfec6ea19515e5",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "21",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1915,
+        "y": 820,
+        "wires": [
+            [
+                "a79005a8f9058553"
+            ],
+            [
+                "302b44d90f9be21e"
+            ],
+            [
+                "06f6260613914a52"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "a79005a8f9058553",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 780,
+        "wires": [
+            [
+                "04d7e513150c9719"
+            ]
+        ]
+    },
+    {
+        "id": "04d7e513150c9719",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2115,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "06f6260613914a52",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1975,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "302b44d90f9be21e",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2020,
+        "y": 820,
+        "wires": [
+            [
+                "04d7e513150c9719"
+            ]
+        ]
+    },
+    {
+        "id": "325bd8dd8ca784bc",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1735,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "e9230831986bd404",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "19.5",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "21",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1905,
+        "y": 1300,
+        "wires": [
+            [
+                "c64f2d50e90e1d4c"
+            ],
+            [
+                "49867fa8427883be"
+            ],
+            [
+                "49a4aec0d5e02382"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "97070e72283a1c0c",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1800,
+        "y": 1300,
+        "wires": [
+            [
+                "e9230831986bd404"
+            ]
+        ]
+    },
+    {
+        "id": "49a4aec0d5e02382",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1965,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "c64f2d50e90e1d4c",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 19",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "19",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2010,
+        "y": 1260,
+        "wires": [
+            [
+                "58f848d83a6a51ce"
+            ]
+        ]
+    },
+    {
+        "id": "49867fa8427883be",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2010,
+        "y": 1300,
+        "wires": [
+            [
+                "58f848d83a6a51ce"
+            ]
+        ]
+    },
+    {
+        "id": "58f848d83a6a51ce",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 2105,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "ac9c3b10a6731b3f",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Guest Mode",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.guest_mode",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 930,
+        "y": 640,
+        "wires": [
+            [
+                "ee060e21325c17f9"
+            ],
+            [
+                "83182c0f.87ae2"
+            ]
+        ]
+    },
+    {
+        "id": "ee060e21325c17f9",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "House Temp",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.t6_pro_z_wave_programmable_thermostat_air_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1230,
+        "y": 260,
+        "wires": [
+            [
+                "c0fc8e170342ff36"
+            ]
+        ]
+    },
+    {
+        "id": "c0fc8e170342ff36",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "22.5",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1335,
+        "y": 260,
+        "wires": [
+            [
+                "4484cd0f3979a758"
+            ],
+            [
+                "df470d999a7afdea"
+            ],
+            [
+                "e648e73a5931a69a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "4484cd0f3979a758",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1440,
+        "y": 220,
+        "wires": [
+            [
+                "70090c425abbb77d"
+            ]
+        ]
+    },
+    {
+        "id": "df470d999a7afdea",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Outside Climate",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.outside_temperature",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 1460,
+        "y": 260,
+        "wires": [
+            [
+                "9d24c5e23bd8460d"
+            ]
+        ]
+    },
+    {
+        "id": "9d24c5e23bd8460d",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Very Hot",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Hot",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1575,
+        "y": 260,
+        "wires": [
+            [
+                "ec3b423a969cb434"
+            ],
+            [
+                "ec3b423a969cb434"
+            ],
+            [
+                "0033b219f65f1ab8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7eb3425d0c7c628b",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 23.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "23.5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1840,
+        "y": 240,
+        "wires": [
+            [
+                "c7141f588980e093"
+            ]
+        ]
+    },
+    {
+        "id": "0033b219f65f1ab8",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1840,
+        "y": 280,
+        "wires": [
+            [
+                "c7141f588980e093"
+            ]
+        ]
+    },
+    {
+        "id": "e648e73a5931a69a",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "mode": "link",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 1395,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c7141f588980e093",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1945,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ec3b423a969cb434",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "08:00",
+        "endTime": "19:30",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1690,
+        "y": 240,
+        "wires": [
+            [
+                "7eb3425d0c7c628b"
+            ],
+            [
+                "0033b219f65f1ab8"
+            ]
+        ]
+    },
+    {
+        "id": "70090c425abbb77d",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "mode": "link",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1535,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4a4525b33be52638",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Inside >= 25.5",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "25.5",
+        "halt_if_type": "num",
+        "halt_if_compare": "gte",
+        "entity_id": "climate.t6_pro_z_wave_programmable_thermostat",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Indoor Temp Notification",
+                "valueType": "str"
+            },
+            {
+                "property": "message",
+                "propertyType": "msg",
+                "value": "There are windows or doors open and the AC is on, because it is 25 degrees inside.",
+                "valueType": "str"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 700,
+        "y": 560,
+        "wires": [
+            [
+                "ac9c3b10a6731b3f",
+                "804a39657d180aeb"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "804a39657d180aeb",
+        "type": "api-call-service",
+        "z": "6360d3b8.6f440c",
+        "name": "Notify Parents",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "notify",
+        "service": "mobile_app_s22_ultra",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"title\":\"{{title}}\",\"message\":\"{{message}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 920,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e89aaf4c960ec90c",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "06:30",
+        "endTime": "20:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1790,
+        "y": 1080,
+        "wires": [
+            [
+                "d72e4607dbc783ea"
+            ],
+            [
+                "2f09d7d9d93ffbe3"
+            ]
+        ]
+    },
+    {
+        "id": "d72e4607dbc783ea",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 25",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "25",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1960,
+        "y": 1060,
+        "wires": [
+            [
+                "4f7339e9.712ac8"
+            ]
+        ]
+    },
+    {
+        "id": "2f09d7d9d93ffbe3",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 23",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "23",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1960,
+        "y": 1100,
+        "wires": [
+            [
+                "4f7339e9.712ac8"
+            ]
+        ]
+    },
+    {
+        "id": "45da942042b9b65a",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "07:00",
+        "endTime": "21:30",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 940,
+        "wires": [
+            [
+                "f48a0ee2.94548"
+            ],
+            [
+                "45e13dcd62c29707",
+                "f20bd3d695894d99"
+            ]
+        ]
+    },
+    {
+        "id": "304c3a743885fdcc",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1940,
+        "y": 940,
+        "wires": [
+            [
+                "c4ab30f9.dd2fa"
+            ]
+        ]
+    },
+    {
+        "id": "45e13dcd62c29707",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "21:30",
+        "endTime": "23:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1790,
+        "y": 940,
+        "wires": [
+            [
+                "304c3a743885fdcc"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e85a73da3c439662",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Heat 19",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "19",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1940,
+        "y": 980,
+        "wires": [
+            [
+                "c4ab30f9.dd2fa"
+            ]
+        ]
+    },
+    {
+        "id": "f20bd3d695894d99",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "23:00",
+        "endTime": "07:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1790,
+        "y": 980,
+        "wires": [
+            [
+                "e85a73da3c439662"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e8380979f54018a5",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Inside <= 14",
+        "server": "",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "14",
+        "halt_if_type": "num",
+        "halt_if_compare": "lte",
+        "entity_id": "climate.t6_pro_z_wave_programmable_thermostat",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Indoor Temp Notification",
+                "valueType": "str"
+            },
+            {
+                "property": "message",
+                "propertyType": "msg",
+                "value": "There are windows or doors open and the heat is on, because it is 14 degrees inside.",
+                "valueType": "str"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 690,
+        "y": 620,
+        "wires": [
+            [
+                "804a39657d180aeb",
+                "ac9c3b10a6731b3f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "89604fbdb208b948",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "mode": "link",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 295,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "fcf2505d6f62b6cf",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "mode": "link",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 625,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c548782d5e225a68",
+        "type": "time-range-switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "startTime": "07:00",
+        "endTime": "19:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 1630,
+        "y": 460,
+        "wires": [
+            [
+                "55e079f55eba66f5"
+            ],
+            [
+                "3feda23cb0e297c2"
+            ]
+        ]
+    },
+    {
+        "id": "55e079f55eba66f5",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 23",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "23",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1800,
+        "y": 440,
+        "wires": [
+            [
+                "aed00f6092874c1d"
+            ]
+        ]
+    },
+    {
+        "id": "3feda23cb0e297c2",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "Cool 19",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "19",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1800,
+        "y": 480,
+        "wires": [
+            [
+                "aed00f6092874c1d"
+            ]
+        ]
+    },
+    {
+        "id": "aed00f6092874c1d",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 1895,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4171c79b6253ccca",
+        "type": "api-current-state",
+        "z": "6360d3b8.6f440c",
+        "name": "Weather",
+        "server": "",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "weather.forecast_home",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "weather",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 2460,
+        "y": 860,
+        "wires": [
+            [
+                "a460343a72f21403"
+            ]
+        ]
+    },
+    {
+        "id": "a460343a72f21403",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "weather.attributes.forecast[0].temperature",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 2575,
+        "y": 860,
+        "wires": [
+            [
+                "a6f949567d8b0a75"
+            ],
+            [
+                "755e908f.001e2",
+                "6174d999.bdb568"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "59d98dca3ea7a7f2",
+        "type": "switch",
+        "z": "6360d3b8.6f440c",
+        "name": "",
+        "property": "set_hvac_mode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "heat",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 2335,
+        "y": 880,
+        "wires": [
+            [
+                "4171c79b6253ccca"
+            ],
+            [
+                "755e908f.001e2",
+                "6174d999.bdb568"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "a6f949567d8b0a75",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "HVAC OFF",
+        "links": [
+            "aabb81b3.2f426"
+        ],
+        "x": 2675,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "73f09084123c50ea",
+        "type": "server-state-changed",
+        "z": "6360d3b8.6f440c",
+        "name": "Vacation Mode Boolean",
+        "server": "",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.vacation_mode",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 120,
+        "y": 880,
+        "wires": [
+            [
+                "563c2245.645fdc"
+            ]
+        ]
+    },
+    {
+        "id": "47faacea14562059",
+        "type": "change",
+        "z": "6360d3b8.6f440c",
+        "name": "sample heat cool",
+        "rules": [
+            {
+                "t": "set",
+                "p": "set_hvac_mode",
+                "pt": "msg",
+                "to": "heat_cool",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "set_temp",
+                "pt": "msg",
+                "to": "22",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 920,
+        "wires": [
+            [
+                "8be6506cf194f658",
+                "42801c09a2b5681e"
+            ]
+        ]
+    },
+    {
+        "id": "8be6506cf194f658",
+        "type": "link out",
+        "z": "6360d3b8.6f440c",
+        "name": "Call Service",
+        "links": [
+            "4c23b0d2.6350c"
+        ],
+        "x": 615,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "42801c09a2b5681e",
+        "type": "api-call-service",
+        "z": "6360d3b8.6f440c",
+        "name": "Set Temp",
+        "server": "",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "climate",
+        "service": "set_temperature",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.t6_pro_z_wave_programmable_thermostat"
+        ],
+        "data": "{\"target_temp_low\":\"18\",\"target_temp_high\":\"22\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 660,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    }
+]
