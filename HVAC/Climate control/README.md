@@ -49,3 +49,4 @@ then create a folder `binary_sensors` and then another yaml inside that folder w
 ### Other Node-Red flows
 
 - [Outside Temp](./../../Core/Outside%20Temp/)
+- [Electricity Price Temp](./../../Core/Electricity%20Price/)

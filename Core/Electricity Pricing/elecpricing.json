@@ -338,7 +338,7 @@
         "z": "0e20099a6949087b",
         "name": "Every hour on the hour",
         "outputField": "payload",
-        "timeZone": "",
+        "timeZone": "America/Toronto",
         "storeName": "",
         "commandResponseMsgOutput": "output1",
         "defaultLocation": "45.22287065598285 -75.68275451660155",

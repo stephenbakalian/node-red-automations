@@ -2,17 +2,17 @@
     {
         "id": "a8c8def2f28327fa",
         "type": "comment",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Changes Outside Temperature Input Select",
         "info": "",
-        "x": 200,
-        "y": 80,
+        "x": 180,
+        "y": 1000,
         "wires": []
     },
     {
         "id": "3a8f54c1da1f1042",
         "type": "inject",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Half hour Update",
         "props": [
             {
@@ -30,8 +30,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 150,
-        "y": 120,
+        "x": 130,
+        "y": 1040,
         "wires": [
             [
                 "72b3ecc75f7f4825"
@@ -41,9 +41,9 @@
     {
         "id": "dc31a2774eb96c8c",
         "type": "switch",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "",
-        "property": "data.attributes.temperature",
+        "property": "data.state",
         "propertyType": "msg",
         "rules": [
             {
@@ -81,8 +81,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 5,
-        "x": 435,
-        "y": 120,
+        "x": 415,
+        "y": 1040,
         "wires": [
             [
                 "25af235e1b7f1bd0"
@@ -105,7 +105,7 @@
     {
         "id": "25af235e1b7f1bd0",
         "type": "change",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Cold",
         "rules": [
             {
@@ -121,8 +121,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 40,
+        "x": 530,
+        "y": 960,
         "wires": [
             [
                 "d6e3e573fa6e14ed"
@@ -132,7 +132,7 @@
     {
         "id": "115d17f37250d0c8",
         "type": "change",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Cool",
         "rules": [
             {
@@ -148,8 +148,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 80,
+        "x": 530,
+        "y": 1000,
         "wires": [
             [
                 "d6e3e573fa6e14ed"
@@ -159,7 +159,7 @@
     {
         "id": "e81d057fd220f66d",
         "type": "change",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Warm",
         "rules": [
             {
@@ -175,8 +175,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 120,
+        "x": 530,
+        "y": 1040,
         "wires": [
             [
                 "d6e3e573fa6e14ed"
@@ -186,7 +186,7 @@
     {
         "id": "3881900e369dbc35",
         "type": "change",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Hot",
         "rules": [
             {
@@ -202,8 +202,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 160,
+        "x": 530,
+        "y": 1080,
         "wires": [
             [
                 "d6e3e573fa6e14ed"
@@ -213,7 +213,7 @@
     {
         "id": "c84801198470caf7",
         "type": "change",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Very Hot",
         "rules": [
             {
@@ -229,8 +229,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 560,
-        "y": 200,
+        "x": 540,
+        "y": 1120,
         "wires": [
             [
                 "d6e3e573fa6e14ed"
@@ -240,7 +240,7 @@
     {
         "id": "d6e3e573fa6e14ed",
         "type": "api-call-service",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Outside Temperature Input_Select",
         "server": "",
         "version": 5,
@@ -258,8 +258,8 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 820,
-        "y": 120,
+        "x": 800,
+        "y": 1040,
         "wires": [
             []
         ]
@@ -267,7 +267,7 @@
     {
         "id": "72b3ecc75f7f4825",
         "type": "api-current-state",
-        "z": "e2e746bc49fb34e0",
+        "z": "d803d56faae81c01",
         "name": "Weather",
         "server": "",
         "version": 3,
@@ -275,7 +275,7 @@
         "halt_if": "",
         "halt_if_type": "str",
         "halt_if_compare": "is",
-        "entity_id": "weather.forecast_home",
+        "entity_id": "sensor.feels_like_temp",
         "state_type": "str",
         "blockInputOverrides": false,
         "outputProperties": [
@@ -295,8 +295,8 @@
         "for": 0,
         "forType": "num",
         "forUnits": "minutes",
-        "x": 320,
-        "y": 120,
+        "x": 300,
+        "y": 1040,
         "wires": [
             [
                 "dc31a2774eb96c8c"
